@@ -29,12 +29,16 @@
     sprite: Structures/Holo/field.rsi # placeholder
     state: icon
     scale: 2, 0.5 
+  - type: Turnstile                 # A turnstile for bullets!!
+    processWhitelist:
+      components:
+        - Reflective 
   - type: Fixtures
     fixtures:
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-1,-0.25,1,0.25" # same dimensions as a door for tall turnstile, prevents objects being thrown through
+          bounds: "-1,-0.25,1,0.25" # long boy
         density: 100
         mask:
         - FullTileMask
@@ -63,12 +67,3 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-#  - type: Turnstile
-#    processWhitelist:
-#      components:
-#      - MobState # no mobs
-#      - Pullable # no dragging things in
-  - type: Turnstile
-    processWhitelist:
-      components:
-        - Reflective 
