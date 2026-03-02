@@ -32,7 +32,10 @@ public abstract partial class SharedTurnstileSystem : EntitySystem
 
     private void OnPreventCollide(Entity<TurnstileComponent> ent, ref PreventCollideEvent args)
     {
-        if (args.Cancelled || !args.OurFixture.Hard || !args.OtherFixture.Hard)
+        if (args.Cancelled || !args.OurFixture.Hard)
+            return;
+
+        if (!args.OtherFixture.Hard && !ent.Comp.ProcessSoftCollisions)
             return;
 
         if (ent.Comp.CollideExceptions.Contains(args.OtherEntity))

@@ -40,6 +40,12 @@ public sealed partial class TurnstileComponent : Component
     public string DefaultState = "turnstile";
 
     /// <summary>
+    /// Should "soft" (non-hard) fixtures like projectiles also be processed?
+    /// </summary>
+    [DataField]
+    public bool ProcessSoftCollisions = false;
+
+    /// <summary>
     /// animation state of the turnstile spinning.
     /// </summary>
     [DataField]

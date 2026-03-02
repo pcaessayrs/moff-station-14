@@ -5,6 +5,7 @@
   suffix: pirate
   description: Sends up a mighty gunport to cover ye blaggards (from bullets, not from the eyes of the Almighty).
   components:
+  # FIXME: this always spawns it in a south-facing direction
   - type: HolosignProjector
     signProto: HolosignGunport
     chargeUse: 120
@@ -18,43 +19,35 @@
 
 - type: entity
   id: HolosignGunport
-  parent: HolosignWetFloor
   name: holographic gunport
   description: A jolly barrier that only allows bullets through in a single direction, but bodies are unobstructed.
   components:
   - type: Physics
-    bodyType: Static
+    bodyType: Dynamic
     canCollide: true
   - type: Sprite
     sprite: Structures/Holo/field.rsi # placeholder
     state: icon
-    scale: 2, 0.5 
+    scale: 2, 1 
+  - type: Projectile
   - type: Turnstile                 # A turnstile for bullets!!
+    processSoftCollisions: true
     processWhitelist:
       components:
-        - Reflective 
+        - Projectile
   - type: Fixtures
     fixtures:
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-1,-0.25,1,0.25" # long boy
+          bounds: "-1,-0.5,1,0.5" # long boy
         density: 100
         mask:
         - FullTileMask
         layer:
         - BulletImpassable
-#      fix2:
-#        shape:
-#          !type:PhysShapeAabb
-#          bounds: "-0.50,-0.50,0.50,0.50" # same dimensions as a door for tall turnstile, prevents objects being thrown through
-#        hard: false
-#        mask:
-#        - FullTileMask
-#        layer:
-#        - BulletImpassable
   - type: TimedDespawn
-    lifetime: 120
+    lifetime: 60
   - type: PointLight
     enabled: true
     radius: 3
