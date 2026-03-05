@@ -22,6 +22,8 @@
     pryPowered: true
     useSound: /Audio/Items/jaws_pry.ogg
   - type: MeleeWeapon
+    autoAttack: true
+    attackRate: 1
     soundHit:
       collection: MetalThud
     wideAnimationRotation: 50
@@ -34,3 +36,11 @@
       types:
         Blunt: 10
         Structural: 30
+  - type: TriggerOnMeleeSwing
+  - type: RepulseAttractOnTrigger
+    range: 2
+    speed: 50 
+    whitelist: 
+      components:
+      - Projectile
+    collisionMask: None

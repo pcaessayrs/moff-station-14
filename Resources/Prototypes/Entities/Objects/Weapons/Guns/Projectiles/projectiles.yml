@@ -75,6 +75,8 @@
         mask:
         - Impassable
         - BulletImpassable
+        layer:
+        - BulletImpassable
       fly-by: &flybyfixture
         shape: !type:PhysShapeCircle
           radius: 1.5
@@ -84,7 +86,14 @@
         - HighImpassable
         - LowImpassable
         hard: False
+      core:
+        shape: !type:PhysShapeCircle
+          radius: 1.05
+        hard: true
+        layer:
+        - BulletImpassable
   - type: Projectile
+    onlyCollideWhenShot: true
     impactEffect: BulletImpactEffect
     damage:
       types:
@@ -655,6 +664,7 @@
   - type: Ammo
     muzzleFlash: null
   - type: Physics
+    bodyType: KinematicController
   - type: Fixtures
     fixtures:
       projectile:
@@ -665,12 +675,20 @@
         mask:
         - Opaque
       fly-by: *flybyfixture
+      core:
+        shape: !type:PhysShapeCircle
+          radius: 1.05
+        mass: 1
+        hard: true
+        layer:
+        - BulletImpassable
   - type: Projectile
+    onlyCollideWhenShot: true
     damage:
       types:
         Heat: 5
   - type: TimedDespawn
-    lifetime: 3
+    lifetime: 300
   - type: Reflective
     reflective:
     - Energy

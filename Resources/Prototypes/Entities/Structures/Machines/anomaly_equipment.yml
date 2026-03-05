@@ -162,7 +162,7 @@
     access: [[ "Research" ]]
   - type: Emitter
     onState: firing
-    powerUseActive: 100
+    powerUseActive: 1
     boltType: AnomalousParticleDelta
     underpoweredState: underpowered
     selectableTypes:
@@ -176,16 +176,16 @@
       SetParticleZeta: AnomalousParticleZeta
       SetParticleSigma: AnomalousParticleSigma
     fireBurstSize: 1
-    fireBurstDelayMin: 2
-    fireBurstDelayMax: 6
+    fireBurstDelayMin: 1
+    fireBurstDelayMax: 1
   - type: ApcPowerReceiver
     powerLoad: 100
   - type: GuideHelp
     guides:
     - APE
   - type: Gun
-    projectileSpeed: 10
-    fireRate: 10 #just has to be fast enough to keep up with upgrades
+    projectileSpeed: 1
+    fireRate: 10000 #just has to be fast enough to keep up with upgrades
     showExamineText: false
     selectedMode: SemiAuto
     availableModes:
